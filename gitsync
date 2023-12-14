@@ -1,0 +1,13 @@
+#!/bin/bash
+
+gstatus=`git status --porcelain`
+
+if [ ${#gstatus} -ne 0 ]
+then
+
+    git add --all
+    git commit -m "Automated Sync: $gstatus"
+    git pull --tags --rebase
+    git push 
+
+fi
