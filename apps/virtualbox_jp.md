@@ -99,3 +99,17 @@ vboxmanage unregistervm <vmname>
 ```bash
 vboxmanage clonevm <vmname> --options keepdisknames --snapshot <name> --name <newname> --basefolder <folder location> --register
 ```
+
+
+
+#### If the disk doesn't get removed
+
+If you get an error when trying to build a box, that a disk already exists, try the following:
+
+`cat ~/.config/VirtualBox/VirtualBox.xml | grep <name of the old host>
+
+Grab the output of the UUID.
+
+`$ vboxmanage closemedium disk "{d89ef84a-d754-4da2-b2a1-cc37063d0c6d}" --delete`
+
+**NOTE:** make sure to use the "curly bracket"
