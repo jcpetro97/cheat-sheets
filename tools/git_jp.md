@@ -18,11 +18,17 @@ find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull origin main \
 ### Merge branch into main
 
 
-```
+```bash
 git checkout main
 git merge --ff-only <feature branch name>
 git push origin main
+
+```
+
+
+### Deleting a branch and the remote
+
+```bash
 git branch -d < feature branch name >
 git fetch --prune origin
 ```
-
