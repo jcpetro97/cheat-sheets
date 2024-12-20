@@ -46,6 +46,7 @@
 | `docker ps --all` | List all containers, including stopped |
 | `docker logs <container>` | Show a container output |
 | `docker logs -f <container>` | Follow a container output |
+| `docker logs -f <container> 2>&1 \| grep string-to-search` | Follow container logs and search for specific string occurrence |
 | `docker top <container>` | List the processes running in a container |
 | `docker diff` | Show the differences with the image (modified files) |
 | `docker inspect` | Show information of a container (json formatted) |
@@ -91,5 +92,5 @@
 | `docker volume rm <volume>` | Destroy a volume |
 | `docker volume ls --filter="dangling=true"` | List all dangling volumes (not referenced by any container) |
 | `docker volume prune` | Delete all volumes (not referenced by any container) |
-| `docker run --rm --volumes-from <container> -v $(pwd):/backup busybox tar cvfz /backup/backup.tar <container-path>` | Backup a container |
-| `docker run --rm --volumes-from <container> -v $(pwd):/backup busybox sh -c "cd <container-path> && tar xvf /backup/backup.tar --strip 1"` | Restore a container from backup |
+| `docker run --rm --volumes-from <container> -v $(pwd):/backup busybox tar cvfz /backup/backup.tar.gz <container-path>` | Backup a container |
+| `docker run --rm --volumes-from <container> -v $(pwd):/backup busybox sh -c "cd <container-path> && tar xvfz /backup/backup.tar.gz --strip 1"` | Restore a container from backup |
